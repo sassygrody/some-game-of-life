@@ -1,21 +1,36 @@
 # frozen_string_literal: true
 
 class Game
-  def initialize(seed_cells)
+  def initialize(seed_cells = [])
     @seed_cells = seed_cells
-    grid_size = 5
+    grid_size = 3
     @board = Array.new(grid_size) { Array.new(grid_size, "-") }
   end
 
-  attr_reader :seed_cells
+  attr_reader :seed_cells, :board
 
   def run
     puts "............................"
     puts "......GAME OF LIFE.....kinda"
     puts "............................"
     puts
+    set_seed_cells_on_board
+    display_board
+  end
+
+  private
+
+  def display_board
     @board.map do |cell|
-      puts cell.join(" ")
+      p cell.join(" ")
+    end
+  end
+
+  def set_seed_cells_on_board
+    return if seed_cells.empty?
+
+    @seed_cells.each do |cell|
+      @board[cell[:row]][cell[:col]] = "+"
     end
   end
 
