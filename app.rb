@@ -24,3 +24,4 @@ game.run
 game.update_board!
 game.update_board!
 game.update_board!
+game.update_board!

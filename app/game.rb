@@ -37,7 +37,7 @@ class Game
   end
 
   def display_board
-    system "clear"
+    # system "clear"
     puts # space between new board output
     add_board_buffer
     @board.map do |cell|
