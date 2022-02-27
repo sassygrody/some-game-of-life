@@ -25,13 +25,13 @@ class Game
 
   def grid_size
     minimum_grid_size = 3
-    highest_row_or_column = seed_cells.map(&:values).flatten.max || 0
+    highest_row_or_column = seed_cells.map(&:values).flatten.max + 1 || 0
     grid_size_for_seed = highest_row_or_column # plus too to handle index and give an extra row/column for new spawns?
     grid_size_for_seed >= minimum_grid_size ? grid_size_for_seed : minimum_grid_size
   end
 
   def put_seed_cells_in_board(live_cell_list)
-    return if live_cell_list.empty?
+    return if live_cell_list.empty? || @board.grid.empty?
 
     live_cell_list.each do |cell|
       @board.grid[cell[:row]][cell[:col]] = "+"
