@@ -124,6 +124,8 @@ class Game
 
   def live_cell_is_near_edge
     # prevent buffer from adding if new live cell isn't within on edge
+    return if @board.empty?
+
     top_row_needs_buffer = @board.first.any? { |cell| cell == "+" }
     bottom_row_needs_buffer = @board.last.any? { |cell| cell == "+" }
     left_side_needs_button = @board.any? { |row| row[0] == "+" }
