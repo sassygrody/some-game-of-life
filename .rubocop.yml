@@ -10,3 +10,6 @@ Style/Documentation:
 
 Style/NegatedIf:
   Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false

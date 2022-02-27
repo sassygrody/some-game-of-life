@@ -20,18 +20,37 @@ RSpec.describe Game do
     context "without seed cells" do
       subject { described_class.new }
 
-      it "displays the grid with no live cells" do
+      it "displays the grid with no active cells" do
         subject.run
-        expect(subject.board).to eq([["-", "-", "-"], ["-", "-", "-"], ["-", "-", "-"]])
+        expect(subject.board).to eq([
+                                      ["-", "-", "-"],
+                                      ["-", "-", "-"],
+                                      ["-", "-", "-"]
+                                    ])
       end
     end
 
     context "with seed cells" do
       subject { described_class.new([{ row: 0, col: 0 }]) }
 
-      it "updates the board with live cells" do
+      it "updates the board with active cells" do
         subject.run
-        expect(subject.board).to eq([["+", "-", "-"], ["-", "-", "-"], ["-", "-", "-"]])
+        expect(subject.board).to eq([
+                                      ["+", "-", "-"],
+                                      ["-", "-", "-"],
+                                      ["-", "-", "-"]
+                                    ])
+      end
+    end
+
+    describe "#update_board" do
+      it "should update the board with new iteration of active cells" do
+      end
+
+      it "checks if an active cell should be killed" do
+      end
+
+      it "check if a dead cell should be activated" do
       end
     end
   end

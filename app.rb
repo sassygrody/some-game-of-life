@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "app/game"
 
 # an array of coords might be more common/performant but
