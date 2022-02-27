@@ -19,7 +19,7 @@ class Game
   end
 
   def update_board!
-    # sleep 2
+    sleep 1
     size = next_live_cell_list.map(&:values).flatten.max || 0
     board = Board.new(size).board
     put_seed_cells_in_board(next_live_cell_list)
@@ -36,6 +36,7 @@ class Game
   end
 
   def display_board
+    system "clear"
     puts # space between new board output
     add_board_buffer
     @board.map do |cell|
