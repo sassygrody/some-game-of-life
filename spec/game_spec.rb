@@ -77,5 +77,50 @@ RSpec.describe Game do
       it "check if a dead cell should be activated" do
       end
     end
+
+    describe "new_seed_list" do
+      let(:seed_cells) do
+        [
+          { row: 0, col: 0 },
+          { row: 0, col: 1 },
+          { row: 0, col: 2 },
+          { row: 1, col: 1 },
+          { row: 1, col: 2 }
+        ]
+      end
+      subject { described_class.new(seed_cells) }
+
+      before do
+        subject.run
+      end
+
+      it "next seed should be" do
+        expect(subject.send(:new_seed_list)).to eq([
+                                                     { col: 2, row: 0 },
+                                                     { col: 1, row: 1 },
+                                                     { col: 3, row: 1 },
+                                                     { col: 1, row: 2 },
+                                                     { col: 3, row: 2 }
+                                                   ])
+      end
+
+      it "renders correctly" do
+        new_game = described_class.new([
+                                         { col: 2, row: 0 },
+                                         { col: 1, row: 1 },
+                                         { col: 3, row: 1 },
+                                         { col: 1, row: 2 },
+                                         { col: 3, row: 2 }
+                                       ])
+        new_game.run
+        expect(new_game.board).to eq([
+                                               ["-", "-", "-", "-", "-"],
+                                               ["-", "-", "-", "+", "-"],
+                                               ["-", "-", "+", "-", "+", "-"],
+                                               ["-", "-", "+", "-", "+", "-"],
+                                               ["-", "-", "-", "-", "-"]
+                                             ])
+      end
+    end
   end
 end

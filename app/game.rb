@@ -20,9 +20,10 @@ class Game
 
   def update_board!
     sleep 1
-    size = next_live_cell_list.map(&:values).flatten.max || 0
-    board = Board.new(size).board
-    put_seed_cells_in_board(next_live_cell_list)
+    new_seeds = new_seed_list
+    size = new_seeds.map(&:values).flatten.max || 0
+    @board = Board.new(size).board
+    put_seed_cells_in_board(new_seeds)
     display_board
   end
 
@@ -61,11 +62,11 @@ class Game
     return if live_cell_list.empty?
 
     live_cell_list.each do |cell|
-      board[cell[:row]][cell[:col]] = "+"
+      @board[cell[:row]][cell[:col]] = "+"
     end
   end
 
-  def next_live_cell_list
+  def new_seed_list
     new_live_cells = []
     board.each_with_index do |row, row_index|
       # do not run on the border buffers
@@ -93,6 +94,7 @@ class Game
     elsif live_neighbors.count == 3
       live = true
     end
+
     live
   end
 
