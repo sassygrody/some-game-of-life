@@ -17,6 +17,7 @@ class Board
   def add_board_buffer
     top_row_needs_buffer? && grid.unshift(Array.new(grid.length, "-"))
     bottom_row_needs_buffer? && grid.push(Array.new(grid.length, "-"))
+    # TODO: need help figuring out why this buffer is uneven
     left_side_needs_buffer? && grid.each { |row| row.unshift("-") }
     right_side_needs_buffer? && grid.each { |row| row.push("-") }
   end
