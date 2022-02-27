@@ -21,8 +21,9 @@ Implement an MVP of Conway's Game of Life
 
 ## Dependencies
 
-- Ruby (bundled and built with 3.0.3, but any 2.x should you need to lower the version)
-- RSpec (optional for specs)
+- Ruby (bundled and built with 2.7.0, but any 2.x should you need to lower the version)
+- RSpec
+- Rubocop (optional, I just know this will make development better for me)
 
 ## Running specs
 
