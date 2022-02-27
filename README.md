@@ -19,6 +19,14 @@ Implement an MVP of Conway's Game of Life
 [] Abstractions are clear and provide the possibility of extension in the future without significant refactoring
 [] Details like idempotency and invariants are considered if relevant to the problem
 
+## Rules
+
+(Condensced from wikipedia)
+
+1. Any dead cell with three live neighbours becomes a live cell.
+1. Any live cell with two or three live neighbours survives.
+1. All other live cells die in the next generation. Similarly, all other dead cells stay dead.
+
 ## Dependencies
 
 - Ruby (bundled and built with 2.7.0, but any 2.x should you need to lower the version)
@@ -37,3 +45,17 @@ bundle exec rspec
 ## Playing the game
 
 - in a terminal execute `ruby app.rb`
+
+## Thoughts on how to solve
+
+1. oh no, this is impossible.
+2. ok, maybe it's kinda possible.
+3. where the heck do I start?
+
+## My Scope
+
+I know there is no way I can rebuild the game as Conway did. So what can I do?
+
+1. Output a grid board with an initial pattern of live cells (seeds)
+2. Update the starting seeds given the game rules up to 10 evolutions
+3. See how that looks and hope my pair knows how to make it infiinte?
