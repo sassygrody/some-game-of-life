@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
+require_relative "board"
 class Game
   def initialize(seed_cells = [])
     @seed_cells = seed_cells
-    @board = Array.new(grid_size) { Array.new(grid_size, "-") }
+    @board = Board.new(grid_size).board
   end
 
   attr_reader :seed_cells, :board
@@ -19,7 +20,9 @@ class Game
 
   def update_board!
     # sleep 2
-    update_all_cells_in_board
+    size = next_live_cell_list.map(&:values).flatten.max || 0
+    board = Board.new(size).board
+    put_seed_cells_in_board(next_live_cell_list)
     display_board
   end
 
@@ -61,7 +64,7 @@ class Game
     end
   end
 
-  def update_all_cells_in_board
+  def next_live_cell_list
     new_live_cells = []
     board.each_with_index do |row, row_index|
       # do not run on the border buffers
@@ -72,6 +75,8 @@ class Game
         new_live_cells << { row: row_index, col: col_index } if cell_is_live
       end
     end
+
+    new_live_cells
   end
 
   def find_new_live_cells(row_index, col_index)
