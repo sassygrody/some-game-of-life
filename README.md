@@ -60,3 +60,7 @@ I know there is no way I can rebuild the game as Conway did. So what can I do?
 - [x] Output a grid board with an initial pattern of live cells (seeds)
 - [] Update the starting seeds given the game rules up to 10 evolutions
 - [] See how that looks and hope my pair knows how to make it infiinte?
+
+## Final thoughts
+
+Overall, I'm a bit disappointed that I didn't make it through my limited scope. I definitely should have considered breaking out into OOP earlier, despite going with the "make it work, make it right, make it fast" strategy. Regardless of time, I don't think think Conway's game is the best way for me to showcase my techincal skills. But hopefully we get a chance to extend and talk about the solution and maybe redeem my problem solving skills despite not solving the problem.
