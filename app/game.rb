@@ -22,7 +22,7 @@ class Game
 
   def display_board
     @board.map do |cell|
-      p cell.join(" ")
+      puts cell.join(" ")
     end
   end
 

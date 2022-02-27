@@ -8,15 +8,17 @@ RSpec.describe Game do
       subject { described_class.new }
 
       it "displays the grid with no live cells" do
-        expect(subject.run).to eq(["- - -", "- - -", "- - -"])
+        subject.run
+        expect(subject.board).to eq([["-", "-", "-"], ["-", "-", "-"], ["-", "-", "-"]])
       end
     end
 
     context "with seed cells" do
       subject { described_class.new([{ row: 0, col: 0 }]) }
 
-      it "displays the grid with live cells" do
-        expect(subject.run).to eq(["+ - -", "- - -", "- - -"])
+      it "updates the board with live cells" do
+        subject.run
+        expect(subject.board).to eq([["+", "-", "-"], ["-", "-", "-"], ["-", "-", "-"]])
       end
     end
   end
