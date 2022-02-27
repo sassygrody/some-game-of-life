@@ -29,10 +29,6 @@ seed_cells = [
 # TODO: make this an iterative flow
 game = Game.new(seed_cells)
 game.run
-game.update_board!
-game.update_board!
-game.update_board!
-game.update_board!
-game.update_board!
-game.update_board!
-game.update_board!
+loop do
+  game.update_board!
+end
