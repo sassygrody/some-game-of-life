@@ -15,6 +15,9 @@ class Game
     puts
     put_seed_cells_in_board(seed_cells)
     display_board
+  end
+
+  def update_board!
     sleep 2
     update_all_cells_in_board
     display_board
@@ -23,7 +26,7 @@ class Game
   private
 
   def grid_size
-    minimum_grid_size = 4
+    minimum_grid_size = 3
     highest_row_or_column = seed_cells.map(&:values).flatten.max || 0
     grid_size_for_seed = highest_row_or_column # plus too to handle index and give an extra row/column for new spawns?
     grid_size_for_seed >= minimum_grid_size ? grid_size_for_seed : minimum_grid_size
@@ -38,7 +41,8 @@ class Game
   end
 
   def add_board_buffer
-    # TODO: only add buffer if the closest live cell is 1 row/column away
+    return unless live_cell_is_near_edge
+
     top_row_padding = Array.new(board.length, "-")
     bottom_row_padding = Array.new(board.length, "-")
     @board.unshift(top_row_padding)
@@ -62,7 +66,7 @@ class Game
     new_live_cells = []
     board.each_with_index do |row, row_index|
       # do not run on the border buffers
-      return if row_index == board.length - 1
+      next if row_index == board.length - 1
 
       row.each_with_index do |_cell, col_index|
         # check_neighbors_and_apply_rule
@@ -120,5 +124,18 @@ class Game
                  right_size]
 
     neighbors.compact - %w[-]
+  end
+
+  def live_cell_is_near_edge
+    # prevent buffer from adding if new live cell isn't within on edge
+    top_row_needs_buffer = @board.first.any? { |cell| cell == "+" }
+    bottom_row_needs_buffer = @board.last.any? { |cell| cell == "+" }
+    left_side_needs_button = @board.map { |row| row[0] == "+" }
+    right_side_needs_button = @board.map { |row| row[-1] == "+" }
+
+    top_row_needs_buffer ||
+      bottom_row_needs_buffer ||
+      left_side_needs_button ||
+      right_side_needs_button
   end
 end

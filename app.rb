@@ -10,4 +10,7 @@ seed_cells = [
   { row: 2, col: 2 }
 ]
 
-Game.new(seed_cells).run
+# TODO: make this an iterative flow
+game = Game.new(seed_cells)
+game.run
+game.update_board!
