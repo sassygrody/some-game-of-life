@@ -18,7 +18,7 @@ class Game
   end
 
   def update_board!
-    sleep 2
+    # sleep 2
     update_all_cells_in_board
     display_board
   end
@@ -61,7 +61,6 @@ class Game
     end
   end
 
-  # ugh this... need to check every cell in the board. which means i'm working with the board 2d array, rather than my obj
   def update_all_cells_in_board
     new_live_cells = []
     board.each_with_index do |row, row_index|
@@ -69,9 +68,6 @@ class Game
       next if row_index == board.length - 1
 
       row.each_with_index do |_cell, col_index|
-        # check_neighbors_and_apply_rule
-        # return cell coordinates (how? this might not be possible atm)
-        # have to reverse engineer the row/col from index??
         cell_is_live = find_new_live_cells(row_index, col_index)
         new_live_cells << { row: row_index, col: col_index } if cell_is_live
       end
@@ -87,15 +83,7 @@ class Game
     live = false
 
     if current_cell == "+"
-      # apply live rules
-
-      live = if live_neighbors.count == 2 || live_neighbors.count == 3
-               true
-             else
-               # kill cell because it's lonely or overpopulated
-               false
-             end
-
+      live = live_neighbors.count == 2 || live_neighbors.count == 3
     elsif live_neighbors.count == 3
       live = true
     end
@@ -130,8 +118,8 @@ class Game
     # prevent buffer from adding if new live cell isn't within on edge
     top_row_needs_buffer = @board.first.any? { |cell| cell == "+" }
     bottom_row_needs_buffer = @board.last.any? { |cell| cell == "+" }
-    left_side_needs_button = @board.map { |row| row[0] == "+" }
-    right_side_needs_button = @board.map { |row| row[-1] == "+" }
+    left_side_needs_button = @board.any? { |row| row[0] == "+" }
+    right_side_needs_button = @board.any? { |row| row[-1] == "+" }
 
     top_row_needs_buffer ||
       bottom_row_needs_buffer ||
