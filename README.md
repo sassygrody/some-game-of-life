@@ -51,6 +51,7 @@ bundle exec rspec
 1. oh no, this is impossible.
 2. ok, maybe it's kinda possible.
 3. where the heck do I start?
+4. Having some major Devbootcamp flash backs to making grids and working with nested arrays and hating that....
 
 ## My Scope
 
