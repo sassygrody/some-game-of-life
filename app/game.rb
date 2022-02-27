@@ -3,7 +3,6 @@
 class Game
   def initialize(seed_cells = [])
     @seed_cells = seed_cells
-    grid_size = 3
     @board = Array.new(grid_size) { Array.new(grid_size, "-") }
   end
 
@@ -19,6 +18,13 @@ class Game
   end
 
   private
+
+  def grid_size
+    minimum_grid_size = 3
+    highest_row_or_column = seed_cells.map(&:values).flatten.max || 0
+    grid_size_for_seed = highest_row_or_column + 1
+    grid_size_for_seed >= minimum_grid_size ? grid_size_for_seed : minimum_grid_size
+  end
 
   def display_board
     @board.map do |cell|

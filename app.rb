@@ -6,7 +6,7 @@ seed_cells = [
   { row: 0, col: 1 },
   { row: 0, col: 2 },
   { row: 1, col: 2 },
-  { row: 2, col: 2 }
+  { row: 20, col: 10 }
 ]
 
 Game.new(seed_cells).run
