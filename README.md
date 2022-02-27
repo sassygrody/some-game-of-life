@@ -57,6 +57,6 @@ bundle exec rspec
 
 I know there is no way I can rebuild the game as Conway did. So what can I do?
 
-1. Output a grid board with an initial pattern of live cells (seeds)
-2. Update the starting seeds given the game rules up to 10 evolutions
-3. See how that looks and hope my pair knows how to make it infiinte?
+- [x] Output a grid board with an initial pattern of live cells (seeds)
+- [] Update the starting seeds given the game rules up to 10 evolutions
+- [] See how that looks and hope my pair knows how to make it infiinte?
