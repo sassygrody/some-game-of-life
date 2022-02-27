@@ -31,7 +31,7 @@ RSpec.describe Game do
     end
 
     context "with seed cells" do
-      subject { described_class.new([{ row: 0, col: 0 }]) }
+      subject { described_class.new([{ row: 1, col: 1 }]) }
 
       it "updates the board with active cells" do
         subject.run
@@ -43,8 +43,15 @@ RSpec.describe Game do
       end
     end
 
-    describe "#update_board" do
+    describe "#update_cell_in_board" do
+      subject { described_class.new([{ row: 1, col: 1 }]) }
       it "should update the board with new iteration of active cells" do
+        subject.run
+        expect(subject.board).to eq([["-", "-", "-", "-"], ["-", "+", "-", "-"], ["-", "-", "-", "-"],
+                                     ["-", "-", "-", "-"]])
+        subject.send(:update_live_cells_in_board!)
+        expect(subject.board).to eq([["-", "-", "-", "-"], ["-", "-", "-", "-"], ["-", "-", "-", "-"],
+                                     ["-", "-", "-", "-"]])
       end
 
       it "checks if an active cell should be killed" do
