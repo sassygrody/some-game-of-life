@@ -64,3 +64,5 @@ I know there is no way I can rebuild the game as Conway did. So what can I do?
 ## Final thoughts
 
 Overall, I'm a bit disappointed that I didn't make it through my limited scope. I definitely should have considered breaking out into OOP earlier, despite going with the "make it work, make it right, make it fast" strategy. Regardless of time, I don't think think Conway's game is the best way for me to showcase my techincal skills. But hopefully we get a chance to extend and talk about the solution and maybe redeem my problem solving skills despite not solving the problem.
+
+Turns out I needed another hour or so to get a game semi-flowing. Checkout [this branch](https://github.com/sassygrody/some-game-of-life/tree/keep-going) if you want to play!
